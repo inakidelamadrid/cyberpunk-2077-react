@@ -1,6 +1,9 @@
 {
+  "$schema": "http://json.schemastore.org/cosmos-config",
   "plugins": ["react-cosmos-plugin-vite"],
   "staticPath": "public",
-  "watchDirs": ["src"],
-  "ignore": ["**/node_modules/**", "**/dist/**"]
+  "watchDirs": ["lib"],
+  "ignore": ["**/node_modules/**", "**/dist/**"],
+  "fixturesDir": "__fixtures__",
+  "globalImports": ["./lib/styles.css"]
 }

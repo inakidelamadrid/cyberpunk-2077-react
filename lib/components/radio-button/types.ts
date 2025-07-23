@@ -17,7 +17,7 @@ export interface RadioGroupActions {
 
 // Domain model for our glitch radio - think of it like a cyberpunk jukebox
 // Each option is like a frequency you can tune into
-export interface GlitchRadioProps extends RadioGroupActions {
+export interface RadioButtonProps extends RadioGroupActions {
   options: RadioOption[];
   selectedValue?: string;
   name: string;

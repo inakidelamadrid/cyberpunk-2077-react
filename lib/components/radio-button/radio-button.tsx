@@ -1,9 +1,8 @@
-// src/components/GlitchRadio/GlitchRadio.tsx
 import React from 'react';
 import { css } from '../../../styled-system/css';
-import type { GlitchRadioProps, RadioOption } from './types';
+import type { RadioButtonProps, RadioOption } from './types';
 
-const RadioButton: React.FC<GlitchRadioProps> = ({
+const RadioButton: React.FC<RadioButtonProps> = ({
   options,
   selectedValue,
   name,
@@ -159,7 +158,7 @@ const RadioButtonItem: React.FC<RadioButtonItemProps> = ({
         className={`${labelClass} radio-label`}
         data-text={option.label}
       >
-        {option.label}
+        {option.label + "Hola"} 
       </span>
     </label>
   );
