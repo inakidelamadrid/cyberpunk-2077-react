@@ -158,7 +158,7 @@ const RadioButtonItem: React.FC<RadioButtonItemProps> = ({
         className={`${labelClass} radio-label`}
         data-text={option.label}
       >
-        {option.label + "Hola"} 
+        {option.label} 
       </span>
     </label>
   );
