@@ -28,7 +28,20 @@ export default defineConfig({
           mono: { value: '"Fira Code", Consolas, "Courier New", Courier, monospace' }
         },
         animations: {
-          glitchDuration: { value: '0.4s' }
+          glitchDuration: { value: '0.4s' },
+          glitchCheckboxDuration: { value: '0.3s' }
+        },
+        sizes: {
+          checkboxSize: { value: '1.5em' },
+          checkboxMarkSize: { value: '60%' }
+        },
+        spacing: {
+          checkboxGap: { value: '0.75rem' },
+          checkboxWrapperGap: { value: '1.5rem' },
+          checkboxWrapperPadding: { value: '2rem' }
+        },
+        radii: {
+          checkboxWrapper: { value: '1rem' }
         }
       },
       keyframes: {
@@ -66,6 +79,32 @@ export default defineConfig({
           'to': {
             transform: 'scale(2.5)',
             opacity: '0'
+          }
+        },
+        glitchCheckbox: {
+          '0%': {
+            transform: 'translate(-50%, -50%)',
+            clipPath: 'inset(0 0 0 0)'
+          },
+          '20%': {
+            transform: 'translate(calc(-50% - 3px), calc(-50% + 2px))',
+            clipPath: 'inset(50% 0 20% 0)'
+          },
+          '40%': {
+            transform: 'translate(calc(-50% + 2px), calc(-50% - 1px))',
+            clipPath: 'inset(20% 0 60% 0)'
+          },
+          '60%': {
+            transform: 'translate(calc(-50% - 2px), calc(-50% + 1px))',
+            clipPath: 'inset(80% 0 5% 0)'
+          },
+          '80%': {
+            transform: 'translate(calc(-50% + 2px), calc(-50% - 2px))',
+            clipPath: 'inset(30% 0 45% 0)'
+          },
+          '100%': {
+            transform: 'translate(-50%, -50%)',
+            clipPath: 'inset(0 0 0 0)'
           }
         }
       }
