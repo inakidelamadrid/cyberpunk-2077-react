@@ -49,3 +49,18 @@ export const AsLinkExternal: Story = {
     children: "Open GitHub",
   },
 };
+
+export const WithGlitch: Story = {
+  args: {
+    children: "GLITCH EFFECT",
+    glitch: true,
+  },
+};
+
+export const DisabledWithGlitch: Story = {
+  args: {
+    children: "Can't glitch when disabled",
+    glitch: true,
+    disabled: true,
+  },
+};

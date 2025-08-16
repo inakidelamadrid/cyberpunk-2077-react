@@ -9,4 +9,5 @@ export interface ButtonProps {
   href?: string;
   target?: string;
   rel?: string;
+  glitch?: boolean;
 }

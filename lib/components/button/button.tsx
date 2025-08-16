@@ -2,18 +2,52 @@ import React from "react";
 import { css, cx } from "../../../styled-system/css";
 import type { ButtonProps } from "./types";
 
-const Button: React.FC<ButtonProps> = ({ 
-  className, 
-  children, 
-  onClick, 
-  disabled, 
+const Button: React.FC<ButtonProps> = ({
+  className,
+  children,
+  onClick,
+  disabled,
   as = "button",
   href,
   target,
-  rel 
+  rel,
+  glitch = false,
 }) => {
   const text = children || "Button component will render here";
-  
+
+  const shouldGlitch = glitch && !disabled;
+
+  const commonPseudoAttributes = {
+    content: "attr(data-text)",
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
+  const glitchPseudoElements = shouldGlitch
+    ? {
+        "&::before": {
+          ...commonPseudoAttributes,
+          opacity: "1",
+          color: "glitch.secondary",
+          animation:
+            "glitch-button 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both",
+          pointerEvents: "none",
+        },
+        "&::after": {
+          ...commonPseudoAttributes,
+          opacity: "0.7",
+          color: "glitch.primary",
+          pointerEvents: "none",
+        },
+      }
+    : {};
+
   const sharedStyles = css({
     display: "block",
     width: "100%",
@@ -35,19 +69,21 @@ const Button: React.FC<ButtonProps> = ({
     overflow: "hidden",
     textAlign: "center",
     textDecoration: "none",
-    _hover: {
+    "&:hover": {
       backgroundColor: "glitch.primary",
       color: "glitch.dark",
       boxShadow: "0 0 1.5rem {colors.glitch.primary}",
       outline: "none",
+      ...glitchPseudoElements,
     },
-    _focus: {
+    "&:focus": {
       backgroundColor: "glitch.primary",
       color: "glitch.dark",
       boxShadow: "0 0 1.5rem {colors.glitch.primary}",
       outline: "none",
+      ...glitchPseudoElements,
     },
-    _active: {
+    "&:active": {
       transform: "scale(0.97)",
     },
   });
@@ -78,11 +114,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button
-      {...commonProps}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button {...commonProps} onClick={onClick} disabled={disabled}>
       <span className={cx("button-text", textStyles)}>{text}</span>
     </button>
   );
