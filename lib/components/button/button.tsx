@@ -15,22 +15,47 @@ const Button: React.FC<ButtonProps> = ({
   const text = children || "Button component will render here";
   
   const sharedStyles = css({
-    padding: "0.75rem 1.5rem",
-    border: "1px solid",
-    borderColor: "glitch.primary",
+    display: "block",
+    width: "100%",
+    marginTop: "1.1rem",
+    padding: "0.7em 1em",
     backgroundColor: "transparent",
+    border: "2px solid",
+    borderColor: "glitch.primary",
     color: "glitch.primary",
-    fontFamily: "mono",
-    fontWeight: "600",
+    fontFamily: "inherit",
+    fontSize: "0.9rem",
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: "0.2em",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.5 : 1,
-    transition: "all 0.2s ease",
+    position: "relative",
+    transition: "all 0.3s",
+    overflow: "hidden",
+    textAlign: "center",
     textDecoration: "none",
-    display: "inline-block",
     _hover: {
       backgroundColor: "glitch.primary",
       color: "glitch.dark",
+      boxShadow: "0 0 1.5rem {colors.glitch.primary}",
+      outline: "none",
     },
+    _focus: {
+      backgroundColor: "glitch.primary",
+      color: "glitch.dark",
+      boxShadow: "0 0 1.5rem {colors.glitch.primary}",
+      outline: "none",
+    },
+    _active: {
+      transform: "scale(0.97)",
+    },
+  });
+
+  const textStyles = css({
+    position: "relative",
+    zIndex: 1,
+    transition: "opacity 0.2s ease",
   });
 
   const commonProps = {
@@ -47,7 +72,7 @@ const Button: React.FC<ButtonProps> = ({
         rel={rel}
         onClick={onClick}
       >
-        <span className="button-text">{text}</span>
+        <span className={cx("button-text", textStyles)}>{text}</span>
       </a>
     );
   }
@@ -58,7 +83,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
     >
-      <span className="button-text">{text}</span>
+      <span className={cx("button-text", textStyles)}>{text}</span>
     </button>
   );
 };
