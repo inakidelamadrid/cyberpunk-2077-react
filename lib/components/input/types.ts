@@ -1,6 +1,7 @@
-import { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from "react";
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'className'> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "className"> {
   label: string;
   className?: string;
   error?: string;
