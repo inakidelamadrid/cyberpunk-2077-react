@@ -1,6 +1,7 @@
 {
   "name": "cyberpunk-2077-lib",
-  "version": "0.1.4",
+  "private": true,
+  "version": "0.2.0",
   "type": "module",
   "main": "./dist/cyberpunk-2077-lib.js",
   "module": "./dist/cyberpunk-2077-lib.js",
