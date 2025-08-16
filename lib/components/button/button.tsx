@@ -16,8 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   const text = children || "Button component will render here";
 
   const shouldGlitch = glitch && !disabled;
-
-  const commonPseudoAttributes = {
+  const commonInteractionStyles = {
     content: "attr(data-text)",
     position: "absolute",
     top: "0",
@@ -28,25 +27,6 @@ const Button: React.FC<ButtonProps> = ({
     alignItems: "center",
     justifyContent: "center",
   };
-
-  const glitchPseudoElements = shouldGlitch
-    ? {
-        "&::before": {
-          ...commonPseudoAttributes,
-          opacity: "1",
-          color: "glitch.secondary",
-          animation:
-            "glitch-button 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both",
-          pointerEvents: "none",
-        },
-        "&::after": {
-          ...commonPseudoAttributes,
-          opacity: "0.7",
-          color: "glitch.primary",
-          pointerEvents: "none",
-        },
-      }
-    : {};
 
   const sharedStyles = css({
     display: "block",
@@ -69,21 +49,51 @@ const Button: React.FC<ButtonProps> = ({
     overflow: "hidden",
     textAlign: "center",
     textDecoration: "none",
-    "&:hover": {
+    _hover: {
       backgroundColor: "glitch.primary",
       color: "glitch.dark",
       boxShadow: "0 0 1.5rem {colors.glitch.primary}",
       outline: "none",
-      ...glitchPseudoElements,
+      ...(shouldGlitch && {
+        "& .button-text::before": {
+          ...commonInteractionStyles,
+          color: "glitch.secondary",
+          animation:
+            "glitchButton token(animations.glitchDuration) cubic-bezier(0.25, 0.46, 0.45, 0.94) both",
+          pointerEvents: "none",
+        },
+        "& .button-text::after": {
+          ...commonInteractionStyles,
+          color: "glitch.dark",
+          animation:
+            "glitchButton token(animations.glitchDuration) cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both",
+          pointerEvents: "none",
+        },
+      }),
     },
-    "&:focus": {
+    _focus: {
       backgroundColor: "glitch.primary",
       color: "glitch.dark",
       boxShadow: "0 0 1.5rem {colors.glitch.primary}",
       outline: "none",
-      ...glitchPseudoElements,
+      ...(shouldGlitch && {
+        "& .button-text::before": {
+          ...commonInteractionStyles,
+          color: "glitch.secondary",
+          animation:
+            "glitchButton token(animations.glitchDuration) cubic-bezier(0.25, 0.46, 0.45, 0.94) both",
+          pointerEvents: "none",
+        },
+        "& .button-text::after": {
+          ...commonInteractionStyles,
+          color: "glitch.dark",
+          animation:
+            "glitchButton token(animations.glitchDuration) cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both",
+          pointerEvents: "none",
+        },
+      }),
     },
-    "&:active": {
+    _active: {
       transform: "scale(0.97)",
     },
   });
@@ -92,6 +102,7 @@ const Button: React.FC<ButtonProps> = ({
     position: "relative",
     zIndex: 1,
     transition: "opacity 0.2s ease",
+    display: "block",
   });
 
   const commonProps = {
@@ -108,14 +119,18 @@ const Button: React.FC<ButtonProps> = ({
         rel={rel}
         onClick={onClick}
       >
-        <span className={cx("button-text", textStyles)}>{text}</span>
+        <span className={cx("button-text", textStyles)} data-text={text}>
+          {text}
+        </span>
       </a>
     );
   }
 
   return (
     <button {...commonProps} onClick={onClick} disabled={disabled}>
-      <span className={cx("button-text", textStyles)}>{text}</span>
+      <span className={cx("button-text", textStyles)} data-text={text}>
+        {text}
+      </span>
     </button>
   );
 };
