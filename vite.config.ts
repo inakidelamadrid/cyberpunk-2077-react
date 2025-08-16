@@ -4,7 +4,14 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
-  plugins: [react(), dts({ include: ['lib'] })],
+  plugins: [
+    react(), 
+    dts({ 
+      include: ['lib'],
+      outDir: 'dist',
+      insertTypesEntry: true
+    })
+  ],
   build: {
     copyPublicDir: false,
     rollupOptions: {
@@ -14,6 +21,7 @@ export default defineConfig({
       fileName: 'cyberpunk-2077-lib',
       entry: resolve(__dirname, 'lib/main.ts'),
       formats: ['es']
-    }
+    },
+    cssCodeSplit: false
   },
 })
