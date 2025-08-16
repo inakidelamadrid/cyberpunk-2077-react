@@ -14,5 +14,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    label: "FOLLOWERS",
+    value: "42k",
+  },
+};
+
+export const Likes: Story = {
+  args: {
+    label: "LIKES",
+    value: "1.2M",
+  },
+};
+
+export const Views: Story = {
+  args: {
+    label: "VIEWS",
+    value: "847",
+  },
 };
