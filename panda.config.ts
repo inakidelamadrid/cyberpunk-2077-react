@@ -106,6 +106,58 @@ export default defineConfig({
             transform: 'translate(-50%, -50%)',
             clipPath: 'inset(0 0 0 0)'
           }
+        },
+        glitchLabel: {
+          '0%': {
+            transform: 'translate(0)',
+            clipPath: 'inset(0 0 0 0)'
+          },
+          '20%': {
+            transform: 'translate(-0.2rem, 0.1rem)',
+            clipPath: 'inset(50% 0 20% 0)'
+          },
+          '40%': {
+            transform: 'translate(0.1rem, -0.1rem)',
+            clipPath: 'inset(20% 0 60% 0)'
+          },
+          '60%': {
+            transform: 'translate(-0.15rem, 0.1rem)',
+            clipPath: 'inset(80% 0 5% 0)'
+          },
+          '80%': {
+            transform: 'translate(0.15rem, -0.15rem)',
+            clipPath: 'inset(30% 0 45% 0)'
+          },
+          '100%': {
+            transform: 'translate(0)',
+            clipPath: 'inset(0 0 0 0)'
+          }
+        },
+        scanVertical: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-100%)'
+          },
+          '25%': {
+            opacity: '0.5'
+          },
+          '75%': {
+            opacity: '0.5'
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateY(100%)'
+          }
+        },
+        dataPulse: {
+          '0%, 100%': {
+            transform: 'scaleY(0.2)',
+            opacity: '0.3'
+          },
+          '50%': {
+            transform: 'scaleY(1)',
+            opacity: '0.8'
+          }
         }
       }
     }
