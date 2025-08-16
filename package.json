@@ -19,7 +19,8 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "vite",
-    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "build": "vite build",
+    "build:clean": "rm -rf dist && yarn build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",

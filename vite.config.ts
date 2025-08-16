@@ -7,9 +7,13 @@ export default defineConfig({
   plugins: [
     react(), 
     dts({ 
-      include: ['lib'],
+      include: ['lib/**/*'],
+      exclude: ['**/*.test.*', '**/*.spec.*'],
+      entryRoot: 'lib',
       outDir: 'dist',
-      insertTypesEntry: true
+      insertTypesEntry: true,
+      copyDtsFiles: true,
+      staticImport: true
     })
   ],
   build: {
