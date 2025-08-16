@@ -1,69 +1,147 @@
-# React + TypeScript + Vite
+# Cyberpunk 2077 React Component Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React component library with a cyberpunk/glitch theme, built with TypeScript, Vite, and Panda CSS.
 
-Currently, two official plugins are available:
+## Components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Button** - Cyberpunk-styled button with glitch effects
+- **Input** - Futuristic input field with scan lines and corner brackets
+- **Checkbox** - Glitch-themed checkbox with cyberpunk styling
+- **Stats** - Data display component with neon styling
+- **RadioButton** - Cyberpunk-themed radio button group
 
-## Expanding the ESLint configuration
+## Local Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+ 
+- Yarn package manager
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Setup
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+yarn
+
+# Generate Panda CSS files (required before development)
+yarn prepare
+
+# Start development server
+yarn dev
+
+# Run Storybook for component development
+yarn storybook
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Building the Library
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Build the library for distribution
+yarn build
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# This generates:
+# - dist/cyberpunk-2077-lib.js (ES module)
+# - dist/cyberpunk-2077-lib.css (styles)
+# - dist/main.d.ts (TypeScript declarations)
+```
+
+## Local Packaging & Testing
+
+This section explains how to package the library locally and test it in another project before publishing to NPM.
+
+### Step 1: Build and Package the Library
+
+```bash
+# Build the library
+yarn build
+
+# Create a local package tarball
+npm pack
+```
+
+This creates a file like `cyberpunk-2077-lib-0.1.4.tgz` containing the built library.
+
+### Step 2: Install in Your Project
+
+In your target Vite/React project:
+
+```bash
+# Install the local package
+npm install /path/to/cyberpunk-2077-lib-0.1.4.tgz
+
+# Or if using yarn
+yarn add /path/to/cyberpunk-2077-lib-0.1.4.tgz
+```
+
+### Step 3: Import and Use Components
+
+```jsx
+// Import components and styles
+import { Button, Input, Checkbox } from 'cyberpunk-2077-lib'
+import 'cyberpunk-2077-lib/dist/cyberpunk-2077-lib.css'
+
+function App() {
+  return (
+    <div>
+      <Button 
+        text="Hack the System" 
+        onClick={() => console.log('Button clicked!')}
+        glitch={true}
+      />
+      
+      <Input 
+        label="Enter Access Code"
+        placeholder="████████"
+      />
+    </div>
+  )
+}
+```
+
+### Step 4: Development Workflow
+
+When making changes to the library:
+
+1. Make your changes in the library
+2. Run `yarn build` to rebuild
+3. Run `npm pack` to create a new package
+4. In your test project, reinstall: `npm install /path/to/new-package.tgz`
+5. Test the changes
+
+### Troubleshooting
+
+**Styles not loading?**
+- Make sure to import the CSS: `import 'cyberpunk-2077-lib/dist/cyberpunk-2077-lib.css'`
+- Check that your bundler supports CSS imports
+
+**TypeScript errors?**
+- Ensure you have the peer dependencies installed: `react@^19.1.0` and `react-dom@^19.1.0`
+
+**Build fails?**
+- Run `yarn prepare` first to generate Panda CSS files
+- Check that all dependencies are installed
+
+## Development Commands
+
+```bash
+# Generate Panda CSS files
+yarn prepare
+
+# Development server
+yarn dev
+
+# Build library
+yarn build
+
+# Lint code
+yarn lint
+
+# Storybook development
+yarn storybook
+
+# Build Storybook
+yarn build-storybook
+
+# Create component scaffold
+yarn component:scaffold
 ```
