@@ -31,3 +31,21 @@ export const LongText: Story = {
     children: "This is a longer button text",
   },
 };
+
+export const AsLink: Story = {
+  args: {
+    as: "a",
+    href: "#",
+    children: "VIEW_ON_GITHUB",
+  },
+};
+
+export const AsLinkExternal: Story = {
+  args: {
+    as: "a",
+    href: "https://github.com",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    children: "Open GitHub",
+  },
+};
