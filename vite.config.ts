@@ -23,7 +23,7 @@ export default defineConfig({
       external: ["react", "react/jsx-runtime"],
     },
     lib: {
-      fileName: "cyberpunk-2077-lib",
+      fileName: "cyberpunk-react-components",
       entry: resolve(__dirname, "lib/main.ts"),
       formats: ["es"],
     },

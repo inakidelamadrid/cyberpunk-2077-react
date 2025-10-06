@@ -2297,9 +2297,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cyberpunk-2077-lib@workspace:.":
+"cyberpunk-react-components@workspace:.":
   version: 0.0.0-use.local
-  resolution: "cyberpunk-2077-lib@workspace:."
+  resolution: "cyberpunk-react-components@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.30.1"
     "@pandacss/dev": "npm:^0.54.0"
@@ -2320,6 +2320,9 @@ __metadata:
     typescript-eslint: "npm:^8.35.1"
     vite: "npm:^7.0.4"
     vite-plugin-dts: "npm:^4.5.4"
+  peerDependencies:
+    react: ^19.1.0
+    react-dom: ^19.1.0
   languageName: unknown
   linkType: soft
 
